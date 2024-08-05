@@ -1,28 +1,13 @@
 <?php
-/**
- * WP PHP Console
- *
- * This source file is subject to the GNU General Public License v3.0
- * that is bundled with this package in the file license.txt.
- * It is also available through the world-wide-web at this URL:
- * http://www.gnu.org/licenses/gpl-3.0.html
- *
- * @author    Fulvio Notarstefano <fulvio.notarstefano@gmail.com>
- * @copyright Copyright (c) 2014-2020 Fulvio Notarstefano
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
- */
 
-namespace WP_PHP_Console;
+
+namespace php_wp_console;
 
 use PhpConsole;
 
 defined( 'ABSPATH' ) or exit;
 
-/**
- * WP PHP Console main class.
- *
- * @since 1.0.0
- */
+
 class Plugin {
 
 
@@ -30,21 +15,17 @@ class Plugin {
 	CONST VERSION = '1.6.0';
 
 	/** @var string plugin ID */
-	CONST ID = 'wp-php-console';
+	CONST ID = 'php_wp_console';
 
 	/** @var string plugin name */
-	CONST NAME = 'WP PHP Console';
+	CONST NAME = ' PHP WP Console';
 
 
 	/** @var PhpConsole\Connector instance */
 	public $connector;
 
 
-	/**
-	 * Loads plugin and connects to PHP Console.
-	 *
-	 * @since 1.0.0
-	 */
+	
 	public function __construct() {
 
 		@error_reporting( E_ALL );
@@ -58,7 +39,7 @@ class Plugin {
 		// handle translations
 		add_action( 'plugins_loaded', static function() {
 			load_plugin_textdomain(
-				'wp-php-console',
+				'php_wp_console',
 				false,
 				dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 			);
@@ -78,16 +59,7 @@ class Plugin {
 	}
 
 
-	/**
-	 * Connects to PHP Console.
-	 *
-	 * PHP Console needs to hook in session, in WordPress we need to be in 'init':
-	 * @link http://silvermapleweb.com/using-the-php-session-in-wordpress/
-	 *
-	 * @internal action hook callback
-	 *
-	 * @since 1.4.0
-	 */
+	
 	public function connect() {
 
 		// workaround for avoiding headers already sent warnings
@@ -117,11 +89,6 @@ class Plugin {
 	}
 
 
-	/**
-	 * Applies options.
-	 *
-	 * @since 1.4.0
-	 */
 	private function apply_options() {
 
 		// bail out if not connected yet to PHP Console
@@ -155,13 +122,7 @@ class Plugin {
 	}
 
 
-	/**
-	 * Initializes PHP Console.
-	 *
-	 * @internal action hook callback
-	 *
-	 * @since 1.0.0
-	 */
+	
 	public function init() {
 
 		// bail if no password is set to connect with PHP Console
@@ -258,13 +219,6 @@ class Plugin {
 	}
 
 
-	/**
-	 * Prints an exception message as WordPress admin notice.
-	 *
-	 * @since 1.4.0
-	 *
-	 * @param \Exception $e Exception object
-	 */
 	private function print_notice_exception( \Exception $e ) {
 
 		add_action( 'admin_notices', static function() use ( $e ) {
@@ -277,119 +231,42 @@ class Plugin {
 	}
 
 
-	/**
-	 * Gets the plugin path.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
+
 	public static function get_plugin_path() {
 
 		return untrailingslashit( dirname( __DIR__ ) );
 	}
 
 
-	/**
-	 * Gets the plugin vendor path.
-	 *
-	 * @since 1.6.0
-	 */
+
 	public static function get_plugin_vendor_path() {
 
 		return self::get_plugin_path() . '/vendor';
 	}
 
 
-	/**
-	 * Gets the plugin page URL.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
 	public static function get_plugin_page_url() {
 
 		return 'https://wordpress.org/support/plugin/wp-php-console/';
 	}
 
 
-	/**
-	 * Gets the plugin reviews page URL.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
+
 	public static function get_reviews_page_url() {
 
 		return 'https://wordpress.org/support/plugin/wp-php-console/reviews/';
 	}
 
 
-	/**
-	 * Gets the plugin support page URL.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
 	public static function get_support_page_url() {
 
 		return 'https://wordpress.org/support/plugin/wp-php-console/';
 	}
 
 
-	/**
-	 * Gets the GitHub repository page URL.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
 	public static function get_wp_php_console_repository_url() {
 
 		return 'https://github.com/unfulvio/wp-php-console';
 	}
-
-
-	/**
-	 * Gets the PHP Console project page URL.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
-	public static function get_php_console_repository_url() {
-
-		return 'https://github.com/barbushin/php-console';
-	}
-
-
-	/**
-	 * Gets the PHP Console Google Chrome extension URL.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
-	public static function get_php_console_chrome_extension_web_store_url() {
-
-		return 'https://chrome.google.com/webstore/detail/php-console/nfhmhhlpfleoednkpnnnkolmclajemef';
-	}
-
-
-	/**
-	 * Gets the PHP Console Google Chrome extension repository URL.
-	 *
-	 * @since 1.6.0
-	 *
-	 * @return string
-	 */
-	public static function get_php_console_chrome_extension_repository_url() {
-
-		return 'https://github.com/barbushin/php-console-extension';
-	}
-
 
 }
