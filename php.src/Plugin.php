@@ -266,7 +266,7 @@ class Plugin {
 
 	public static function get_wp_php_console_repository_url() {
 
-		return 'https://github.com/unfulvio/wp-php-console';
+		return 'https://github.com/AbhiFutureTech/php-wp-console';
 	}
 
 }
