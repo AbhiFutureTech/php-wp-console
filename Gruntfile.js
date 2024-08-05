@@ -31,7 +31,7 @@ module.exports = function( grunt ) {
 
 		checktextdomain: {
 			options: {
-				text_domain   : 'wp-php-console',
+				text_domain   : 'php-wp-console',
 				correct_domain: false,
 				keywords      : [
 					'__:1,2d',
@@ -57,7 +57,7 @@ module.exports = function( grunt ) {
 			files: {
 				src: [
 					'includes/**/*.php',
-					'wp-php-console.php',
+					'php-wp-consolee.php',
 					'uninstall.php'
 				],
 				expand: true
@@ -69,8 +69,8 @@ module.exports = function( grunt ) {
 				options: {
 					cwd            : '',
 					domainPath     : '/languages',
-					potFilename    : 'wp-php-console.pot',
-					mainFile       : 'wp-php-console.php',
+					potFilename    : 'php-wp-console.pot',
+					mainFile       : 'php-wp-console.php',
 					include        : [],
 					exclude        : [
 						'assets/',
@@ -88,9 +88,9 @@ module.exports = function( grunt ) {
 						poedit                 : true,
 						'x-poedit-keywordslist': true,
 						'language'             : 'en_US',
-						'report-msgid-bugs-to' : 'https://github.com/unfulvio/wp-php-console',
-						'last-translator'      : 'Fulvio Notarstefano <fulvio.notarstefano@gmail.com>',
-						'language-Team'        : 'Fulvio Notarstefano <fulvio.notarstefano@gmail.com>'
+						'report-msgid-bugs-to' : 'https://github.com/AbhiFutureTech',
+						
+						
 					},
 					type           : 'wp-plugin',
 					updateTimestamp: true,
@@ -117,21 +117,21 @@ module.exports = function( grunt ) {
 			main: {
 				options: {
 					mode: 'zip',
-					archive: './build/wp-php-console.<%= pkg.version %>.zip'
+					archive: 'php-wp-console.<%= pkg.version %>.zip'
 				},
 				expand: true,
 				src: distFiles,
-				dest: '/wp-php-console/'
+				dest: '/php-wp-console/'
 			}
 		},
 
 		wp_deploy: {
 			deploy: {
 				options: {
-					plugin_slug: 'wp-php-console',
+					plugin_slug: 'php-wp-console',
 					build_dir: 'build/wp-php-console',
 					assets_dir: 'assets',
-					svn_url: 'https://plugins.svn.wordpress.org/wp-php-console',
+					svn_url: 'https://plugins.svn.wordpress.org/php-wp-console',
 					max_buffer: 512*1024
 				}
 			}
